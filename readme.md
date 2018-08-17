@@ -8,7 +8,8 @@ Tool to help creation of components
   
 ## Installation
 1. Install module gobaly
-    $ `npm install kiwi-server-cli -g`
+    
+    `> npm install kiwi-server-cli -g`
 
 ## Commands
 1. Init
