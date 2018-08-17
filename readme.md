@@ -13,6 +13,7 @@ Tool to help creation of components
 
 ## Commands
 1. Init
+    It creates a default server to start.
     
     ` kc init `
 
