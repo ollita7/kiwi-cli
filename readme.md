@@ -12,14 +12,18 @@ Tool to help creation of components
 
 ## Commands
 1. Init
+
     $ `kc init`
 
 2. Create controller
+
     $ `kc -c <name of the controller>`
 
 3. Create Middlewares
+
     $ `kc -m [ after | before ] <name of the middleware>`
 
 4. Build (NOT WORKING)
+
     $ `kc -b`
     
