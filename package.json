@@ -14,7 +14,7 @@
     "kiw-server"
   ],
   "bin": {
-    "kiwi-cli": "./cli.js"
+    "kc": "./cli.js"
   },
   "author": "Guillermo Fernandez",
   "license": "ISC",
