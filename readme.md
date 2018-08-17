@@ -26,5 +26,6 @@ Tool to help creation of components
     ` kc -m [ after | before ] <name of the middleware>`
 
 4. Build (NOT WORKING)
+
     ` kc -b `
     
