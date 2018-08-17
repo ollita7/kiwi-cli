@@ -1,0 +1,30 @@
+{
+  "name": "kiwi--server-cli",
+  "version": "1.0.0",
+  "description": "command line helper to generate base component structures",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ollita7/kiwi-cli.git"
+  },
+  "keywords": [
+    "kiw-server"
+  ],
+  "bin": {
+    "kiwi-cli": "./cli.js"
+  },
+  "author": "Guillermo Fernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ollita7/kiwi-cli/issues"
+  },
+  "homepage": "https://github.com/ollita7/kiwi-cli#readme",
+  "dependencies": {
+    "commander": "^2.17.1",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.10"
+  }
+}

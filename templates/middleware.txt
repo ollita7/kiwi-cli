@@ -1,0 +1,12 @@
+import { IMiddleware } from 'kiwi-server';
+import { MiddlewaresAfter } from 'kiwi-server';
+import * as http from 'http';
+
+@Middlewares{type}()
+export class {name}Middleware implements IMiddleware {
+    
+    execute(request: http.IncomingMessage, response: http.ServerResponse, next: any){
+        // TODO: here is your code
+        next();
+    }
+}

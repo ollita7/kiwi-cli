@@ -1,0 +1,17 @@
+import { JsonController, Get, Param, Body} from 'kiwi-server';
+
+@JsonController('{name}')
+export class {name}Controller {
+    
+    @Get('/get/:id')
+    public get(@Param('id') id: string){
+        return {
+            id: id
+        }
+    }
+
+    @Post('/post')
+    public post(@Body() body: any){
+        return body;
+    }
+}

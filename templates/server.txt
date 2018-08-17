@@ -1,0 +1,19 @@
+import { createKiwiServer, IKiwiOptions } from 'kiwi-server';
+
+function validateAuthentication(roles: Array<string>){
+    return true;
+}
+
+const options: IKiwiOptions = {
+    controllers: [],
+    authorization: validateAuthentication,
+    middlewares: [],
+    cors: true,
+    documentation: {
+        enabled: true,
+        path: '/apidoc'
+    },
+    log: true,
+    port: 8086
+}
+const server = createKiwiServer(options);
