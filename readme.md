@@ -1,6 +1,6 @@
 
 # <img src="kiwi.png" width="120" alt="logo">
-Framework to help rest api development using typescript and node.
+Tool to help creation of components
 
 # Table of Contents
 * [Installation](#installation)
