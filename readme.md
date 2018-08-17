@@ -9,21 +9,21 @@ Tool to help creation of components
 ## Installation
 1. Install module gobaly
     
-    `> npm install kiwi-server-cli -g`
+    ` npm install kiwi-server-cli -g `
 
 ## Commands
 1. Init
     
-    `> kc init`
+    ` kc init `
 
 2. Create controller
     
-    `> kc -c <name of the controller>`
+    ` kc -c <name of the controller>`
 
 3. Create Middlewares
     
-    `> kc -m [ after | before ] <name of the middleware>`
+    ` kc -m [ after | before ] <name of the middleware>`
 
 4. Build (NOT WORKING)
-    `> kc -b`
+    ` kc -b `
     
