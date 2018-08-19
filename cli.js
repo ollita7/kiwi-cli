@@ -76,4 +76,9 @@ function execute(name, type) {
       console.log('INFO: build finished successfully');
     }
   }
+  if (program.run) {
+    var result = require('child_process').execSync(`tsc`).toString();
+    result = require('child_process').execSync(`node ./dist/server.js`).toString();
+    console.log(result);
+  }
 }
