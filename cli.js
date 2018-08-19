@@ -6,7 +6,7 @@ var _ = require('lodash');
 
 program
   .version('0.1.0')
-  .arguments('<name>')
+  .arguments('[name]')
   .usage('kc [options] <name>')
   .option('-i, --init', 'creates initial sever', 'server.ts')
   .option('-c, --controller', 'creates a empty controller')
@@ -28,13 +28,21 @@ function ensureDirectoryExistence(filePath) {
 }
 
 function create(name, content, path) {
- ensureDirectoryExistence(name);
+  ensureDirectoryExistence(name);
   fs.writeFile(name, content, function (err) {
     if (err) {
       return console.log(`${err}\nERROR: Some error ocurred trying to create file.`);
     }
     console.log("INFO: The file was created");
   });
+}
+
+function getName(name) {
+  const path = name.split('/');
+  if (path.length === 1) {
+    return name;
+  }
+  return path.pop();
 }
 
 function execute(name, type) {
@@ -47,26 +55,25 @@ function execute(name, type) {
   }
   if (program.controller) {
     let content = fs.readFileSync(`${__dirname}/templates/controller.txt`);
-    content = _.replace(content, /{name}/g, name);
+
+    content = _.replace(content, /{name}/g, getName(name));
     create(`${name}.controller.ts`, content);
     return;
   }
   if (program.middleware) {
     const typeValue = type === 'after' || type === 'a' ? 'After' : 'Before'
     let content = fs.readFileSync(`${__dirname}/templates/middleware.txt`);
-    content = _.replace(content, '{name}', name);
+    content = _.replace(content, '{name}', getName(name));
     content = _.replace(content, '{type}', typeValue);
     create(`${name}.middleware.${typeValue}.ts`, content);
     return;
   }
   if (program.build) {
-    var exec = require('child_process').exec;
-    exec(`${__dirname}/tsc`, function callback(error, stdout, stderr) {
-      if (error) {
-        console.log(error);
-        return;
-      }
-      console.log('Compilation finished')
-    });
+    var result = require('child_process').execSync(`tsc`).toString();
+    if(result !==''){
+      console.log(result);  
+    } else {
+      console.log('INFO: build finished successfully');
+    }
   }
 }
