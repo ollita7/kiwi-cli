@@ -19,11 +19,11 @@ Tool to help creation of components
 
 2. Create controller
     
-    ` kc -c <name of the controller>`
+    ` kc -c [<name> | <path/name>]`
 
 3. Create Middlewares
     
-    ` kc -m [ after | before ] <name of the middleware>`
+    ` kc -m [ after | before ] [<name> | <path/name>]`
 
 4. Build (NOT WORKING)
 
