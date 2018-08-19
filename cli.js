@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var fs = require('fs');
 var program = require('commander');
+var path = require('path');
 var _ = require('lodash');
 
 program
@@ -17,7 +18,17 @@ program
   })
   .parse(process.argv);
 
-function create(name, content) {
+function ensureDirectoryExistence(filePath) {
+  var dirname = path.dirname(filePath);
+  if (fs.existsSync(dirname)) {
+    return true;
+  }
+  ensureDirectoryExistence(dirname);
+  fs.mkdirSync(dirname);
+}
+
+function create(name, content, path) {
+ ensureDirectoryExistence(name);
   fs.writeFile(name, content, function (err) {
     if (err) {
       return console.log(`${err}\nERROR: Some error ocurred trying to create file.`);
@@ -51,7 +62,7 @@ function execute(name, type) {
   if (program.build) {
     var exec = require('child_process').exec;
     exec(`${__dirname}/tsc`, function callback(error, stdout, stderr) {
-      if(error){
+      if (error) {
         console.log(error);
         return;
       }
