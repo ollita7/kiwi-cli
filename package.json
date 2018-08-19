@@ -1,6 +1,6 @@
 {
   "name": "kiwi-server-cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "command line helper to generate base component structures",
   "main": "cli.js",
   "scripts": {
