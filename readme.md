@@ -13,7 +13,7 @@ Tool to help creation of components
 
 ## Commands
 1. Init
-    It creates a default server to start.
+    It creates a default server to start. Also it creates a tsconfig by default.
     
     ` kc init `
 
@@ -25,7 +25,8 @@ Tool to help creation of components
     
     ` kc -m [ after | before ] [<name> | <path/name>]`
 
-4. Build (NOT WORKING)
+4. Build 
+    This command use the tsconfig created by default using init command
 
     ` kc -b `
     
