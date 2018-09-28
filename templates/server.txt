@@ -1,6 +1,8 @@
 import { createKiwiServer, IKiwiOptions } from 'kiwi-server';
+import * as http from 'http';
 
-function validateAuthentication(roles: Array<string>){
+function validateAuthentication(request: http.IncomingMessage, roles: Array<string>){
+    console.log(roles);
     return true;
 }
 
