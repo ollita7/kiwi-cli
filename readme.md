@@ -15,7 +15,7 @@ Tool to help creation of components
 1. Init
     It creates a default server to start. Also it creates a tsconfig by default.
     
-    ` kc init `
+    ` kc -i`
 
 2. Create controller
     
