@@ -15,18 +15,18 @@ Tool to help creation of components
 1. Init
     It creates a default server to start. Also it creates a tsconfig by default.
     
-    ` kc -i`
+    ` kc init`
 
 2. Create controller
     
-    ` kc -c [<name> | <path/name>]`
+    ` kc controller [<name> | <path/name>]`
 
 3. Create Middlewares
     
-    ` kc -m [ after | before ] [<name> | <path/name>]`
+    ` kc middleware [ after | before ] [<name> | <path/name>]`
 
 4. Build 
     This command use the tsconfig created by default using init command
 
-    ` kc -b `
+    ` kc build `
     
