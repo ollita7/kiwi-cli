@@ -29,6 +29,7 @@ Tool to help creation of components
 4. Build 
     This command use the tsconfig created by default using init command.
     The <env> specify what environment file in the environments folder is goint to be compiled.
+    Also the code will be generated on a folder dist/<env>.
 
     ` kc build -e <env>`
 
