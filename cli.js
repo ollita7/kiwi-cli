@@ -23,8 +23,8 @@ program
   .command('middleware <name>')
   .option("-t <type>, --type <type>", "Please specify the type <before|after>")
   .description('creates a empty middleware')
-  .action((name, type) => {
-    helper.executeMiddleware(name, type);
+  .action((name, options) => {
+    helper.executeMiddleware(name, options.type);
   });
 
 program

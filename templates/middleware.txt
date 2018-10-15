@@ -2,7 +2,7 @@ import { IMiddleware } from 'kiwi-server';
 import { MiddlewareAfter } from 'kiwi-server';
 import * as http from 'http';
 
-@Middlewares{type}()
+@Middleware{type}()
 export class {name}Middleware implements IMiddleware {
     
     execute(request: http.IncomingMessage, response: http.ServerResponse, next: any){
