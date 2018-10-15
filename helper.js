@@ -25,8 +25,8 @@ exports.executeMiddleware = function (name, type) {
     const typeValue = type === 'after' || type === 'a' ? 'After' : 'Before'
     let content = fs.readFileSync(`${__dirname}/templates/middleware.txt`);
     content = _.replace(content, '{name}', getName(name));
-    content = _.replace(content, '{type}', typeValue);
-    create(`${src_path}/${name}.middleware.${typeValue}.ts`, content);
+    content = _.replace(content, /{type}/g, typeValue);
+    create(`${src_path}/${name}.middleware.${_.lowerCase(typeValue)}.ts`, content);
 }
 
 exports.executeBuild = function (env) {
