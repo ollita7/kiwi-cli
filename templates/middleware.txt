@@ -1,5 +1,5 @@
 import { IMiddleware } from 'kiwi-server';
-import { MiddlewareAfter } from 'kiwi-server';
+import { Middleware{type} } from 'kiwi-server';
 import * as http from 'http';
 
 @Middleware{type}()
