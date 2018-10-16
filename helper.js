@@ -45,15 +45,16 @@ exports.executeBuild = function (env) {
         extendedConfig.include.push(`environments/environment.ts`);
     }
     create('tsconfig.temp.json', Buffer.from(JSON.stringify(extendedConfig, null, 2)));
-    var result = require('child_process').execSync(`tsc --project tsconfig.temp.json --outDir ${outDir}`).toString();
-    if (result !== '') {
-        console.log(result);
-    } else {
+    try{
+        require('child_process').execSync(`tsc --project tsconfig.temp.json --outDir ${outDir}`).toString();
         if (env !== 'default') {
             renameFile(`${outDir}/environments/environment.${env}.js`, `${outDir}/environments/environment.js`);
         }
         removeFile('tsconfig.temp.json');
         console.log(`INFO: build for environment ${env} finished successfully`);
+    }
+    catch (error) {
+        console.log(error.stdout.toString());
     }
 }
 
