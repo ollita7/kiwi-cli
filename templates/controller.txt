@@ -1,6 +1,6 @@
 import { JsonController, Get, Post, Param, Body} from 'kiwi-server';
 
-@JsonController('{name}')
+@JsonController('/{name}')
 export class {name}Controller {
 
     @Get('/get/:id')
