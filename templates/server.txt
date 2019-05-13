@@ -10,7 +10,10 @@ const options: IKiwiOptions = {
     controllers: [],
     authorization: validateAuthentication,
     middlewares: [],
-    cors: true,
+    cors: {
+        enabled: true,
+        domains: []
+    },
     documentation: {
         enabled: true,
         path: '/apidoc'
