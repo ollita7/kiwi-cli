@@ -30,9 +30,10 @@ program
 program
   .command('build')
   .option("-e, --env <env>", "Please specify the environment")
+  .option("-w, --watch", "Watch for changes in source code")
   .description('Build your code')
   .action((options) => {
-    helper.executeBuild(options.env);
+    helper.executeBuild(options.env, options.watch);
   });
 
 program.parse(process.argv);

@@ -13,6 +13,7 @@ Tool to help creation of components
 
 ## Commands
 1. Init
+
     It creates a default server to start. Also it creates a tsconfig by default.
     By default this command creates a folder environments with two environments: 1) environment.ts and 2) environment.prod.ts. Also you can create as many environments as you want.
     
@@ -27,10 +28,14 @@ Tool to help creation of components
     ` kc middleware [ after | before ] [<name> | <path/name>]`
 
 4. Build 
+
     This command use the tsconfig created by default using init command.
-    The <env> specify what environment file in the environments folder is goint to be compiled.
+    The <env> specify what environment file in the environments folder is going to be compiled.
     Also the code will be generated on a folder dist/<env>.
 
     ` kc build -e <env>`
 
+    To watch for changes in the source code, use the `-w` or `--watch` flag:
+
+    ` kc build --watch`
     
