@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var process = require('child_process')
 var _ = require('lodash');
 var kiwiconsole = require('./kiwiconsole');
 
@@ -52,7 +53,7 @@ exports.executeMiddleware = function (name, type) {
     }
 }
 
-exports.executeBuild = function (env) {
+exports.executeBuild = function (env, watch) {
     const extendedConfig = {
         extends: "./tsconfig.json",
         include: ['src/'],
@@ -69,12 +70,17 @@ exports.executeBuild = function (env) {
     }
     create('tsconfig.temp.json', Buffer.from(JSON.stringify(extendedConfig, null, 2)));
     try {
-        require('child_process').execSync(`tsc --project tsconfig.temp.json --outDir ${outDir}`).toString();
-        if (env !== 'default') {
-            renameFile(`${outDir}/environments/environment.${env}.js`, `${outDir}/environments/environment.js`);
+        const command = `tsc --project ./tsconfig.temp.json --outDir ${outDir}`;
+        if (watch) {
+          process.spawnSync('sh', ['-c', `${command} --watch`], { stdio: 'inherit' });
+        } else {
+          process.execSync(command);
+          if (env !== 'default') {
+              renameFile(`${outDir}/environments/environment.${env}.js`, `${outDir}/environments/environment.js`);
+          }
+          removeFile('tsconfig.temp.json');
+          kiwiconsole.success(`build for environment ${env} finished successfully`);
         }
-        removeFile('tsconfig.temp.json');
-        kiwiconsole.success(`build for environment ${env} finished successfully`);
     }
     catch (error) {
         kiwiconsole.error(error.stdout.toString());
