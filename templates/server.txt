@@ -1,9 +1,10 @@
 import { createKiwiServer, IKiwiOptions } from 'kiwi-server';
 import * as http from 'http';
 
-function validateAuthentication(request: http.IncomingMessage, roles: Array<string>){
-    console.log(roles);
-    return true;
+async function validateAuthentication(request: http.IncomingMessage, roles: Array<string>): Promise<AuthorizeResponse | boolean> {
+  console.log(roles);
+  return true;
+  // return new AuthorizeResponse(403, 'fasdfasdfdasgas dgs dsg');
 }
 
 const options: IKiwiOptions = {
