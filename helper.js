@@ -6,12 +6,20 @@ var kiwiconsole = require('./kiwiconsole');
 
 const src_path = 'src';
 
-exports.executeInit = function () {
+exports.executeInit = function (kc,t,tsn,tnv,kv,watch) {
     try {
         let content = fs.readFileSync(`${__dirname}/templates/server.txt`);
         create(`${src_path}/server.ts`, content);
         content = fs.readFileSync(`${__dirname}/templates/tsconfig.json`);
         create('tsconfig.json', content);
+        content = fs.readFileSync(`${__dirname}/templates/package.json`);
+        content = _.replace(content, /{kc}/g, getVersions('kc',kc));
+        content = _.replace(content, /{t}/g, getVersions('t',kc));
+        content = _.replace(content, /{tsn}/g, getVersions('tsn',kc));
+        content = _.replace(content, /{tnv}/g, getVersions('tnv',kc));
+        content = _.replace(content, /{kv}/g, getVersions('kv',kc));
+        content = _.replace(content, /{name}/g, getVersions('name',kc));
+        create('package.json', content);
         content = fs.readFileSync(`${__dirname}/templates/environments/environment.txt`);
         create('environments/environment.ts', content);
         content = fs.readFileSync(`${__dirname}/templates/environments/environment.prod.txt`);
@@ -151,3 +159,28 @@ function getName(name) {
     }
     return path.pop();
 }
+
+function getVersions(key,version){
+    switch (key) {
+        case 'kc':
+           return (version) ? varsion : '^1.1.1'
+        case 't':
+            return (version) ? version : '3.3.3333'
+        case 'tsn':
+            return (version) ? version : '3.3.0'
+        case 'tnv':
+            return (version) ? version : '^8.0.29'
+        case 'kv':
+            return (version) ? version : '^1.3.13'
+        case 'name':
+            return (version) ? version : ''
+      }
+}
+
+/*
+        content = _.replace(content, /{kc}/g, getName(name));
+        content = _.replace(content, /{t}/g, getName(name));
+        content = _.replace(content, /{tsn}/g, getName(name));
+        content = _.replace(content, /{tnv}/g, getName(name));
+        content = _.replace(content, /{kv}/g, getName(name));
+*/

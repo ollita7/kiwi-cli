@@ -1,0 +1,18 @@
+{
+  "name": "{name}",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "kiwi-server-cli": "{kc}",
+    "typescript": "{t}",
+    "ts-node": "{tsn}",
+    "@types/node": "{tnv}",
+    "kiwi-server": "{kv}"
+  }
+}
