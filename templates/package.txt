@@ -5,6 +5,8 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "kc build",
+    "start": "npm run compile && node {path}"
   },
   "author": "",
   "license": "ISC",

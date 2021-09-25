@@ -6,7 +6,7 @@ var kiwiconsole = require('./kiwiconsole');
 
 const src_path = 'src';
 
-exports.executeInit = function (kc,t,tsn,tnv,kv,watch) {
+exports.executeInit = function (kc,t,tsn,tnv,kv,path) {
     try {
         let content = fs.readFileSync(`${__dirname}/templates/server.txt`);
         create(`${src_path}/server.ts`, content);
@@ -19,6 +19,7 @@ exports.executeInit = function (kc,t,tsn,tnv,kv,watch) {
         content = _.replace(content, /{tnv}/g, getVersions('tnv',kc));
         content = _.replace(content, /{kv}/g, getVersions('kv',kc));
         content = _.replace(content, /{name}/g, getVersions('name',kc));
+        content = _.replace(content, /{path}/g, getVersions('path',kc));
         create('package.json', content);
         content = fs.readFileSync(`${__dirname}/templates/environments/environment.txt`);
         create('environments/environment.ts', content);
@@ -174,6 +175,8 @@ function getVersions(key,version){
             return (version) ? version : '^1.3.13'
         case 'name':
             return (version) ? version : ''
+        case 'path':
+            return (version) ? version : './dist/default/src/server.js'
       }
 }
 
