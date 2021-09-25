@@ -19,6 +19,9 @@ const options: IKiwiOptions = {
         enabled: true,
         path: '/apidoc'
     },
+    socket: {
+        enabled:false
+    },
     log: true,
     port: 8086
 }
