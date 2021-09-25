@@ -9,8 +9,17 @@ program
 
 program
   .command('init')
+  .option('-kc, --kiwicliversion', 'Specify the cli version')
+  .option('-t, --typescriptversion', 'Specify the typescript version')
+  .option('-tsn, --tsnodeversion', 'Specify the ts-node version')
+  .option('-tnv, --typesnodeversion', 'Specify the @types/node version')
+  .option('-kv, --kiwiserverversion', 'Specify the kiwi-server version')
+  .option('-n, --name', 'Specify the name')
+  .option('-p, --path', 'Specify the path')
   .description('creates an empty server')
-  .action(helper.executeInit);
+  .action((options) => {
+    helper.executeInit(options.kiwicliversion,options.typescriptversion,options.tsnodeversion,options.typesnodeversion,options.kiwiserverversion,options.name);
+  });
 
 program
   .command('controller <name>')
